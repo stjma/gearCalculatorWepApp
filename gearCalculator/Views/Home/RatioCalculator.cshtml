@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewData["Title"] = "Gear Ratio";
+}
+
+<h1>Gear Ratio</h1>
+
+@model GearViewModel
+@using (Html.BeginForm())
+{
+    <table id="numbers-container">
+        <tr>
+            <td>
+                <div>
+                    <label>Chainring</label>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <label>Cog</label>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Min
+            </td>
+
+            <td>
+                Min
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div>
+                    @Html.TextBoxFor(s => s.Chainringmin)
+                </div>
+            </td>
+            <td>
+                <div>
+                    @Html.TextBoxFor(s => s.Cogmin)
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Max
+            </td>
+
+            <td>
+                Max
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <div>
+                    @Html.TextBoxFor(s => s.Chainringmax)
+                </div>
+            </td>
+            <td>
+                <div>
+                    @Html.TextBoxFor(s => s.Cogmax)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id="Submit1" type="submit" value="submit" />
+            </td>
+        </tr>
+    </table>
+
+
+
+
+
+}
+
+
+@{
+    var arrayobject = ViewBag.MyArray;
+
+    if (arrayobject != null)
+    {
+        @*int rowLength = arrayobject.GetLength(0);
+            int colLength = arrayobject.GetLength(1);
+
+            <table id="numbers-container">
+                @for (int i = 0; i < rowLength; i++)
+                {
+                    <tr>
+                        @for (int j = 0; j < colLength; j++)
+                        {
+                            <td>@arrayobject[i, j]</td>
+                        }
+                    </tr>
+                }
+            </table>*@
+        <table id="numbers-container">
+            @foreach (var sublist in arrayobject)
+            {
+                <tr>
+                    @foreach (var value in sublist)
+                    {
+                        <td>@value</td>
+                    }
+                </tr>
+            }
+        </table>
+    }
+
+}
+
+
