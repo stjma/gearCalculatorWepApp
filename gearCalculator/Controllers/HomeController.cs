@@ -14,22 +14,6 @@ namespace gearCalculator.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
-
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
-        //public IActionResult Privacy()
-        //{
-        //    return View();
-        //}
-
-
         //RatioCalculator
         public IActionResult RatioCalculator()
         {
@@ -42,8 +26,6 @@ namespace gearCalculator.Controllers
         public ActionResult RatioCalculator(GearViewModel model)
         {
             List<List<string>> completeRatio = new List<List<string>>();
-            //validation max bigger than min
-            //string[,] test = { { model.Chainringmin, model.Chainringmax} , {model.Cogmin, model.Cogmax } };
 
             if (model.Chainringmax != null && model.Chainringmin != null && model.Cogmax != null && model.Cogmin != null)
             {
@@ -102,7 +84,7 @@ namespace gearCalculator.Controllers
                     for (double ii = Double.Parse(model.Chainringmin); ii <= Double.Parse(model.Chainringmax); ii++)
                     {
 
-                        //calcul.ToString()
+                        
                         double calcul = ii / i;
 
                         NextRow.Add(Convert.ToDecimal(string.Format("{0:F2}", calcul)).ToString());

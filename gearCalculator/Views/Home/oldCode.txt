@@ -1,0 +1,49 @@
+﻿        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
+
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
+
+
+
+         //validation max bigger than min
+         //string[,] test = { { model.Chainringmin, model.Chainringmax} , {model.Cogmin, model.Cogmax } };
+
+
+         @*int rowLength = arrayobject.GetLength(0);
+            int colLength = arrayobject.GetLength(1);
+
+            <table id="numbers-container">
+                @for (int i = 0; i < rowLength; i++)
+                {
+                    <tr>
+                        @for (int j = 0; j < colLength; j++)
+                        {
+                            <td>@arrayobject[i, j]</td>
+                        }
+                    </tr>
+                }
+            </table>*@
+
+            //calcul.ToString()
+
+
+
+            @*<a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+
+
+             @*<li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>*@

@@ -78,10 +78,6 @@
         </tr>
     </table>
 
-
-
-
-
 }
 
 
@@ -90,20 +86,7 @@
 
     if (arrayobject != null)
     {
-        @*int rowLength = arrayobject.GetLength(0);
-            int colLength = arrayobject.GetLength(1);
-
-            <table id="numbers-container">
-                @for (int i = 0; i < rowLength; i++)
-                {
-                    <tr>
-                        @for (int j = 0; j < colLength; j++)
-                        {
-                            <td>@arrayobject[i, j]</td>
-                        }
-                    </tr>
-                }
-            </table>*@
+        
         <table id="numbers-container" class="table table-bordered table-sm table-hover border-bottom">
             @foreach (var sublist in arrayobject)
             {
