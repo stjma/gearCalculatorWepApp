@@ -14,26 +14,26 @@ namespace gearCalculator.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
 
 
         //RatioCalculator
         public IActionResult RatioCalculator()
         {
-           
+
             return View();
         }
 
@@ -45,36 +45,77 @@ namespace gearCalculator.Controllers
             //validation max bigger than min
             //string[,] test = { { model.Chainringmin, model.Chainringmax} , {model.Cogmin, model.Cogmax } };
 
-
-            List<string> firstRow = new List<string>();
-
-            firstRow.Add(" ");
-            for (int i = Int32.Parse(model.Chainringmin); i <= Int32.Parse(model.Chainringmax); i++)
-            {
-                firstRow.Add(i.ToString());
-            }
-
-
-            completeRatio.Add(firstRow);
-            for (double i = Double.Parse(model.Cogmin); i <= Double.Parse(model.Cogmax); i++)
+            if (model.Chainringmax != null && model.Chainringmin != null && model.Cogmax != null && model.Cogmin != null)
             {
 
-                List<string> NextRow = new List<string>();
-                NextRow.Add(i.ToString());
-                for (double ii = Double.Parse(model.Chainringmin); ii <= Double.Parse(model.Chainringmax); ii++)
+                int chMax = Int32.Parse(model.Chainringmax);
+                int chMin = Int32.Parse(model.Chainringmin);
+
+                int cMax = Int32.Parse(model.Cogmax);
+                int cMin = Int32.Parse(model.Cogmin);
+
+                if (chMax <= chMin && cMax <= cMin)
+                {
+                    ModelState.Clear();
+                    model.Chainringmax = chMin.ToString();
+                    model.Chainringmin = chMax.ToString();
+
+
+                    model.Cogmax = cMin.ToString();
+                    model.Cogmin = cMax.ToString();
+                }
+                else if (chMax <= chMin)
+                {
+                    ModelState.Clear();
+                    model.Chainringmax = chMin.ToString();
+                    model.Chainringmin = chMax.ToString();
+
+                    model.Cogmax = cMax.ToString();
+                    model.Cogmin = cMin.ToString();
+                }
+                else if (cMax <= cMin)
+                {
+                    ModelState.Clear();
+                    model.Chainringmax = chMax.ToString();
+                    model.Chainringmin = chMin.ToString();
+
+                    model.Cogmax = cMin.ToString();
+                    model.Cogmin = cMax.ToString();
+                }
+
+
+                List<string> firstRow = new List<string>();
+
+                firstRow.Add(" ");
+                for (int i = Int32.Parse(model.Chainringmin); i <= Int32.Parse(model.Chainringmax); i++)
+                {
+                    firstRow.Add(i.ToString());
+                }
+
+
+                completeRatio.Add(firstRow);
+                for (double i = Double.Parse(model.Cogmin); i <= Double.Parse(model.Cogmax); i++)
                 {
 
-                    //calcul.ToString()
-                    double calcul = ii / i;
-                    
-                    NextRow.Add(Convert.ToDecimal(string.Format("{0:F2}", calcul)).ToString());
+                    List<string> NextRow = new List<string>();
+                    NextRow.Add(i.ToString());
+                    for (double ii = Double.Parse(model.Chainringmin); ii <= Double.Parse(model.Chainringmax); ii++)
+                    {
 
-                    
+                        //calcul.ToString()
+                        double calcul = ii / i;
+
+                        NextRow.Add(Convert.ToDecimal(string.Format("{0:F2}", calcul)).ToString());
+
+
+                    }
+                    completeRatio.Add(NextRow);
                 }
-                completeRatio.Add(NextRow);
-            }
 
-            ViewBag.MyArray = completeRatio;
+                ViewBag.MyArray = completeRatio;
+                return View(model);
+
+            }
             return View();
         }
 

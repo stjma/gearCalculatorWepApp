@@ -8,9 +8,9 @@
 @model GearViewModel
 @using (Html.BeginForm())
 {
-    <table id="numbers-container">
+    <table class="table table-borderless table-responsive table-sm ">
         <tr>
-            <td>
+            <td class="d-none d-lg-table-cell">
                 <div>
                     <label>Chainring</label>
                 </div>
@@ -35,12 +35,12 @@
         <tr>
             <td>
                 <div>
-                    @Html.TextBoxFor(s => s.Chainringmin)
+                    @Html.TextBoxFor(s => s.Chainringmin, new { @type = "number" })
                 </div>
             </td>
             <td>
                 <div>
-                    @Html.TextBoxFor(s => s.Cogmin)
+                    @Html.TextBoxFor(s => s.Cogmin, new { @type = "number" })
                 </div>
             </td>
         </tr>
@@ -53,24 +53,28 @@
             <td>
                 Max
             </td>
+          
         </tr>
 
         <tr>
             <td>
                 <div>
-                    @Html.TextBoxFor(s => s.Chainringmax)
+                    @Html.TextBoxFor(s => s.Chainringmax, new { @type = "number" })
                 </div>
             </td>
             <td>
                 <div>
-                    @Html.TextBoxFor(s => s.Cogmax)
+                    @Html.TextBoxFor(s => s.Cogmax, new { @type = "number" })
                 </div>
             </td>
+
+           
         </tr>
         <tr>
-            <td>
-                <input id="Submit1" type="submit" value="submit" />
+            <td >
+                <input id="Submit1" type="submit" value="Submit" />
             </td>
+           
         </tr>
     </table>
 
@@ -100,7 +104,7 @@
                     </tr>
                 }
             </table>*@
-        <table id="numbers-container">
+        <table id="numbers-container" class="table table-bordered table-sm table-hover border-bottom">
             @foreach (var sublist in arrayobject)
             {
                 <tr>
