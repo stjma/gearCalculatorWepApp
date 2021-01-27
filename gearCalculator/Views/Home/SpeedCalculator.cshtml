@@ -1,0 +1,207 @@
+﻿
+@{
+    ViewData["Title"] = "Speed";
+}
+
+<h1>Speed</h1>
+
+@{
+    int ChainMin = 20;
+    int chainMax = 75;
+
+    List<int> listChain = new List<int>();
+
+
+    for (int i = ChainMin; i <= chainMax; i++)
+    {
+        listChain.Add(i);
+    }
+
+
+    int cogMin = 8;
+    int cogMax = 60;
+
+    List<int> listCog = new List<int>();
+
+    for (int i = cogMin; i <= cogMax; i++)
+    {
+        listCog.Add(i);
+    }
+
+
+    List<SelectListItem> listWheelSize = new List<SelectListItem>()
+{
+        new SelectListItem{ Text="28inch (635mm)", Value = "635" },
+        new SelectListItem{ Text="27inch (630mm)", Value = "630" },
+        new SelectListItem{ Text="700c/29er (622)", Value = "622" },
+        new SelectListItem{ Text="26inch (584mm)", Value = "584" },
+        new SelectListItem{ Text="26inch (571mm)", Value = "571" },
+        new SelectListItem{ Text="25inch (559mm-mtb)", Value = "559" },
+        new SelectListItem{ Text="24inch (547mm-S5)", Value = "547" },
+        new SelectListItem{ Text="23inch (540mm-E6)", Value = "540" },
+        new SelectListItem{ Text="22inch (520mm-Terry)", Value = "520" },
+        new SelectListItem{ Text="21inch (507mm-MTB/BMX)", Value = "507" },
+        new SelectListItem{ Text="20inch (451mm-Recumbent)", Value = "451" },
+        new SelectListItem{ Text="19inch (419mm-Schwinn)", Value = "419" },
+        new SelectListItem{ Text="18inch (406mm-BMX/Recumb)", Value = "406" },
+        new SelectListItem{ Text="17inch (369mm)", Value = "369" },
+        new SelectListItem{ Text="16inch (349mm-Brompton)", Value = "349" }
+    };
+
+
+    List<SelectListItem> listTireSize = new List<SelectListItem>()
+    {
+        new SelectListItem{ Text="20.00mm", Value = "20" },
+        new SelectListItem{ Text="23.0mm", Value = "23" },
+        new SelectListItem{ Text="25.0mm", Value = "25" },
+        new SelectListItem{ Text="26.0mm", Value = "26" },
+        new SelectListItem{ Text="27.0mm", Value = "27" },
+        new SelectListItem{ Text="28.0mm", Value = "28" },
+        new SelectListItem{ Text="30.0mm", Value = "30" },
+        new SelectListItem{ Text="32.0mm", Value = "32" },
+        new SelectListItem{ Text="35.0mm", Value = "35" },
+        new SelectListItem{ Text="37.0mm", Value = "37" },
+        new SelectListItem{ Text="38.0mm", Value = "38" },
+        new SelectListItem{ Text="40.0mm", Value = "40" },
+        new SelectListItem{ Text="42.0mm", Value = "42" },
+        new SelectListItem{ Text="44.0mm", Value = "44" },
+        new SelectListItem{ Text="45.0mm", Value = "45" },
+        new SelectListItem{ Text="50.0mm", Value = "50" },
+        new SelectListItem{ Text="56.0mm", Value = "56" },
+        new SelectListItem{ Text="25.4mm", Value = "25.4" },
+        new SelectListItem{ Text="31.75mm", Value = "31.75" },
+        new SelectListItem{ Text="34.29mm", Value = "34.29" },
+        new SelectListItem{ Text="35.56mm", Value = "35.56" },
+        new SelectListItem{ Text="38.1mm", Value = "38.1" },
+        new SelectListItem{ Text="44.45mm", Value = "44.45" },
+        new SelectListItem{ Text="48.26mm", Value = "48.26" },
+        new SelectListItem{ Text="49.5mm", Value = "49.5" },
+        new SelectListItem{ Text="50.8mm", Value = "50.8" },
+        new SelectListItem{ Text="53.34mm", Value = "53.34" },
+        new SelectListItem{ Text="54.0mm", Value = "54.0" },
+        new SelectListItem{ Text="55.88mm", Value = "55.88" },
+        new SelectListItem{ Text="57.15mm", Value = "57.15" },
+        new SelectListItem{ Text="58.42mm", Value = "58.42" },
+        new SelectListItem{ Text="59.69mm", Value = "59.69" },
+        new SelectListItem{ Text="60.96mm", Value = "60.96" },
+        new SelectListItem{ Text="63.5mm", Value = "63.5" },
+        new SelectListItem{ Text="66.04mm", Value = "66.04" },
+        new SelectListItem{ Text="69.85mm", Value = "69.85" },
+        new SelectListItem{ Text="71.12mm", Value = "71.12" },
+        new SelectListItem{ Text="76.2mm", Value = "76.2" },
+        new SelectListItem{ Text="96.52mm", Value = "96.52" },
+        new SelectListItem{ Text="101.6mm", Value = "101.6" },
+        new SelectListItem{ Text="107.95mm", Value = "107.95" },
+        new SelectListItem{ Text="114.30mm", Value = "114.30" },
+        new SelectListItem{ Text="116.84mm", Value = "116.84" },
+        new SelectListItem{ Text="119.38mm", Value = "119.38" },
+        new SelectListItem{ Text="121.92mm", Value = "121.92" },
+        new SelectListItem{ Text="124.46mm", Value = "124.46" }
+    };
+
+
+    List<SelectListItem> speedKphOrMph = new List<SelectListItem>()
+    {
+        new SelectListItem{ Text="Kph", Value = "1" },
+        new SelectListItem{ Text="Mph", Value = "2" }
+    };
+
+
+    List<int> cadence = new List<int>();
+    for (int i = 50; i <= 120; i+=10)
+    {
+        cadence.Add(i);
+    }
+
+    }
+
+@model SpeedViewModel
+@using (Html.BeginForm())
+{
+    <table class="table table-borderless table-responsive table-sm ">
+        <tr>
+            <td colspan="2">
+                <div>
+                    <label>Chainring</label>
+                </div>
+            </td>
+            <td colspan="2">
+                <div>
+                    <label>Cog</label>
+                </div>
+            </td>
+
+            <td colspan="2" align="center">
+                <div>
+                    <label>Wheel</label>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Min
+            </td>
+
+            <td>
+                Min
+            </td>
+
+            <td>
+                Min
+            </td>
+
+            <td>
+                Min
+            </td>
+
+            <td>
+                Rime Size
+            </td>
+
+            <td>
+                @Html.DropDownListFor(s => s.RimeSize, listWheelSize, "")
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DropDownListFor(s => s.Chainringmin, new SelectList(listChain), "")
+            </td>
+            <td>
+                @Html.DropDownListFor(s => s.Chainringmax, new SelectList(listChain), "")
+            </td>
+            <td>
+                @Html.DropDownListFor(s => s.Cogmin, new SelectList(listCog), "")
+            </td>
+            <td>
+                @Html.DropDownListFor(s => s.Cogmax, new SelectList(listCog), "")
+            </td>
+            <td>
+                tire size
+            </td>
+            <td>
+                @Html.DropDownListFor(s => s.TireSize, listTireSize, "")
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                Cadence
+            </td>
+            <td>
+                @Html.DropDownListFor(s => s.TireSize, speedKphOrMph, "")
+            </td>
+            <td>
+                Speed Unit
+            </td>
+            <td>
+                @Html.DropDownListFor(s => s.TireSize, new SelectList(cadence), "")
+            </td>
+            <td colspan="2" align="center">
+                <input id="Submit1" type="submit" value="Calculate" />
+            </td>
+        </tr>
+    </table>
+}

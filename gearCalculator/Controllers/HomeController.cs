@@ -14,9 +14,16 @@ namespace gearCalculator.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        //RatioCalculator
+        public IActionResult SpeedCalculator()
+        {
+            return View();
+        }
 
-        
+        public IActionResult MeterCalculator()
+        {
+            return View();
+        }
+
         public IActionResult RatioCalculator()
         {
             return View();   
