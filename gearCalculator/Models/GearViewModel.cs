@@ -8,7 +8,7 @@ namespace gearCalculator.Models
 {
     public class GearViewModel
     {
-       
+  
         public string Cogmax { get; set; }
        
         public string Cogmin { get; set; }

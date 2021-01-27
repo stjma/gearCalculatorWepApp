@@ -15,16 +15,18 @@ namespace gearCalculator.Controllers
         private readonly ILogger<HomeController> _logger;
 
         //RatioCalculator
+
+        
         public IActionResult RatioCalculator()
         {
-
-            return View();
+            return View();   
         }
 
 
         [HttpPost]
         public ActionResult RatioCalculator(GearViewModel model)
         {
+            
             List<List<string>> completeRatio = new List<List<string>>();
 
             if (model.Chainringmax != null && model.Chainringmin != null && model.Cogmax != null && model.Cogmin != null)
@@ -67,13 +69,12 @@ namespace gearCalculator.Controllers
 
 
                 List<string> firstRow = new List<string>();
-
-                firstRow.Add(" ");
+                firstRow.Add("");
                 for (int i = Int32.Parse(model.Chainringmin); i <= Int32.Parse(model.Chainringmax); i++)
                 {
                     firstRow.Add(i.ToString());
                 }
-
+                firstRow.Add("");
 
                 completeRatio.Add(firstRow);
                 for (double i = Double.Parse(model.Cogmin); i <= Double.Parse(model.Cogmax); i++)
@@ -91,9 +92,10 @@ namespace gearCalculator.Controllers
 
 
                     }
+                    NextRow.Add(i.ToString());
                     completeRatio.Add(NextRow);
                 }
-
+                completeRatio.Add(firstRow);
                 ViewBag.MyArray = completeRatio;
                 return View(model);
 

@@ -47,3 +47,116 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>*@
+
+
+
+
+
+
+                        <table class="table table-borderless table-responsive table-sm ">
+    <tr>
+        <td class="d-none d-lg-table-cell">
+            <div>
+                <label>Chainring</label>
+            </div>
+        </td>
+        <td class="d-none d-lg-table-cell">
+            <div>
+                <label>Cog</label>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Min
+        </td>
+
+        <td>
+            Min
+        </td>
+    </tr>
+   
+    <tr>
+        <td>
+            @*<div>
+            @Html.TextBoxFor(s => s.Chainringmin, new { @type = "number" })
+            </div>*@
+
+            @Html.DropDownListFor(s => s.Chainringmin, new SelectList(listChain))
+
+        </td>
+        <td>
+            @*<div>
+                @Html.TextBoxFor(s => s.Cogmin, new { @type = "number" })
+            </div>*@
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            Max
+        </td>
+
+        <td>
+            Max
+        </td>
+
+    </tr>
+
+    <tr>
+        <td>
+            <div>
+                @Html.TextBoxFor(s => s.Chainringmax, new { @type = "number" })
+            </div>
+        </td>
+        <td>
+            <div>
+                @Html.TextBoxFor(s => s.Cogmax, new { @type = "number" })
+            </div>
+        </td>
+
+
+    </tr>
+    <tr>
+        <td>
+            <input id="Submit1" type="submit" value="Submit" />
+        </td>
+
+    </tr>
+</table>
+
+
+
+
+  //20-75
+            //8-60
+
+        List<int> chainList = new List<int>();
+        List<int> coglist = new List<int>();
+        int cogmin = 8; int cogMax = 60;
+            int chainMin = 20; int chainMax = 75;
+
+            
+
+            for(int i = cogmin; i <= cogMax; i++)
+            {
+                coglist.Add(i);
+            }
+            
+           
+
+            for (int i = chainMin; i <= chainMax; i++)
+            {
+                chainList.Add(i);
+            }
+
+            TempData["coglist"] = coglist;
+            TempData["chainList"] = chainList;
+            
+            <tr >
+        <td colspan="4" >
+            <input id="Submit1" type="submit" value="Submit"/>
+        </td>
+
+    </tr>
