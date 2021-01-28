@@ -1,9 +1,9 @@
 ﻿
 @{
-    ViewData["Title"] = "Meters";
+    ViewData["Title"] = "Gear Meters";
 }
 
-<h1>Meters</h1>
+<h1>Gear Meters</h1>
 
 @{
     int ChainMin = 20;
@@ -50,7 +50,7 @@
 
 
     List<SelectListItem> listTireSize = new List<SelectListItem>()
-    {
+{
         new SelectListItem{ Text="20.00mm", Value = "20" },
         new SelectListItem{ Text="23.0mm", Value = "23" },
         new SelectListItem{ Text="25.0mm", Value = "25" },
@@ -163,7 +163,7 @@
                 @Html.DropDownListFor(s => s.Cogmax, new SelectList(listCog), "")
             </td>
             <td>
-                tire size
+                Tire size
             </td>
             <td>
                 @Html.DropDownListFor(s => s.TireSize, listTireSize, "")
@@ -177,4 +177,47 @@
             </td>
         </tr>
     </table>
+}
+
+
+@{
+    var arrayobject = ViewBag.MyArray;
+
+    if (arrayobject != null)
+    {
+
+        <table id="numbers-container" class="table table-bordered table-sm table-hover border-bottom">
+            @foreach (var sublist in arrayobject)
+            {
+                <tr>
+                    @foreach (var value in sublist)
+                    {
+                        @if (string.IsNullOrEmpty(value))
+                        {
+                            <td>@value</td>
+                        }
+                        else if (!value.ToString().Contains("."))
+                        {
+                            <td>@value</td>
+                        }
+                        else if (Double.Parse(value) > 6.5)
+                        {
+                            <td class="table-success">@value</td>
+                        }
+                        else if (Double.Parse(value) < 4)
+                        {
+                            <td class="table-danger">@value</td>
+                        }
+                        else
+                        {
+                            <td class="table-warning">@value</td>
+                        }
+                    }
+                </tr>
+            }
+        </table>
+
+        <p> 6.5+ green, 4-6.5 yellow, -4 red</p>
+    }
+
 }

@@ -1,9 +1,9 @@
 ﻿
 @{
-    ViewData["Title"] = "Speed";
+    ViewData["Title"] = "Gear Speed";
 }
 
-<h1>Speed</h1>
+<h1>Gear Speed</h1>
 
 @{
     int ChainMin = 20;
@@ -50,7 +50,7 @@
 
 
     List<SelectListItem> listTireSize = new List<SelectListItem>()
-    {
+{
         new SelectListItem{ Text="20.00mm", Value = "20" },
         new SelectListItem{ Text="23.0mm", Value = "23" },
         new SelectListItem{ Text="25.0mm", Value = "25" },
@@ -101,19 +101,19 @@
 
 
     List<SelectListItem> speedKphOrMph = new List<SelectListItem>()
-    {
-        new SelectListItem{ Text="Kph", Value = "1" },
-        new SelectListItem{ Text="Mph", Value = "2" }
+{
+        new SelectListItem{ Text="Mph", Value = "1" },
+        new SelectListItem{ Text="Kph", Value = "2" }
     };
 
 
     List<int> cadence = new List<int>();
-    for (int i = 50; i <= 120; i+=10)
+    for (int i = 50; i <= 120; i += 10)
     {
         cadence.Add(i);
     }
 
-    }
+}
 
 @model SpeedViewModel
 @using (Html.BeginForm())
@@ -178,7 +178,7 @@
                 @Html.DropDownListFor(s => s.Cogmax, new SelectList(listCog), "")
             </td>
             <td>
-                tire size
+                Tire size
             </td>
             <td>
                 @Html.DropDownListFor(s => s.TireSize, listTireSize, "")
@@ -188,20 +188,63 @@
 
         <tr>
             <td>
-                Cadence
-            </td>
-            <td>
-                @Html.DropDownListFor(s => s.TireSize, speedKphOrMph, "")
-            </td>
-            <td>
                 Speed Unit
             </td>
             <td>
-                @Html.DropDownListFor(s => s.TireSize, new SelectList(cadence), "")
+                @Html.DropDownListFor(s => s.KpmOrMph, speedKphOrMph, "")
+            </td>
+            <td>
+                Cadence
+            </td>
+            <td>
+                @Html.DropDownListFor(s => s.Cadence, new SelectList(cadence), "")
             </td>
             <td colspan="2" align="center">
                 <input id="Submit1" type="submit" value="Calculate" />
             </td>
         </tr>
     </table>
+}
+
+
+@{
+    var arrayobject = ViewBag.MyArray;
+
+    if (arrayobject != null)
+    {
+
+        <table id="numbers-container" class="table table-bordered table-sm table-hover border-bottom">
+            @foreach (var sublist in arrayobject)
+            {
+                <tr>
+                    @foreach (var value in sublist)
+                    {
+                        @if (string.IsNullOrEmpty(value))
+                        {
+                            <td>@value</td>
+                        }
+                        else if (!value.ToString().Contains("."))
+                        {
+                            <td>@value</td>
+                        }
+                        else if (Double.Parse(value) > 20)
+                        {
+                            <td class="table-success">@value</td>
+                        }
+                        else if (Double.Parse(value) < 10)
+                        {
+                            <td class="table-danger">@value</td>
+                        }
+                        else
+                        {
+                            <td class="table-warning">@value</td>
+                        }
+                    }
+                </tr>
+            }
+        </table>
+
+        <p> 20+ green, 4-6.5 yellow, -10 red</p>
+    }
+
 }
