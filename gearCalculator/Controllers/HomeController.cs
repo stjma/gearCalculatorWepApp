@@ -14,6 +14,12 @@ namespace gearCalculator.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        public IActionResult Strava()
+        {
+            return View();
+        }
+
+
         public IActionResult SpeedCalculator()
         {
             return View();
@@ -200,6 +206,7 @@ namespace gearCalculator.Controllers
 
         public IActionResult RatioCalculator()
         {
+            
             return View();
         }
 
