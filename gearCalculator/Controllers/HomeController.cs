@@ -31,7 +31,7 @@ namespace gearCalculator.Controllers
             List<List<string>> completeRatio = new List<List<string>>();
 
             if (model.Chainringmax != null && model.Chainringmin != null && model.Cogmax != null
-                && model.Cogmin != null && model.RimeSize != null && model.TireSize != null)
+                && model.Cogmin != null && model.RimeSize != null && model.TireSize != null && model.Cadence != null)
             {
                 
                 double wheelDiameter = (((Double.Parse(model.RimeSize)) + (Double.Parse(model.TireSize) * 2)) * (Math.PI)) *(0.0000373) * (Double.Parse(model.Cadence));
